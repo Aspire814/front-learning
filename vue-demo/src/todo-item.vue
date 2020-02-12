@@ -1,14 +1,25 @@
 <template>
   <div class="todo-item-content">
-    <input class="item-box" type="checkbox"/>
-    <input class="item-text" type ="text"/>
-    <button class="item-btn"></button>
+    <input class="item-box" type="checkbox" v-model="todo.compeleted"/>
+    <input class="item-text" type ="text" v-model="todo.content"/>
+    <button class="item-btn" @click="deleteTodo">X</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'todo-item'
+  name: 'todo-item',
+  props:{
+    todo:{
+      type : Object,
+      required:true
+    }
+  },
+  methods:{
+    deleteTodo(){
+      this.$emit('del',this.todo.id);
+    }
+  }
 }
 </script>
 
@@ -26,7 +37,7 @@ export default {
   }
 
   .item-text{
-    width: 88%;
+    width: 85%;
     height: 40px;
   }
 
