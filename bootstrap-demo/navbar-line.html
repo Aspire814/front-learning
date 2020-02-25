@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+      crossorigin="anonymous"
+    />
+    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script
+      src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="logo_bar" class="logo-bar">logo</div>
+    <ul id="nav_bar" class="nav-bar ">
+      <li>
+        <a href="#">首 页</a>
+      </li>
+      <li>
+        <a href="#">商 城</a>
+      </li>
+    </ul>
+
+    <script type="text/javascript">
+      $(function() {
+        var nav = $("#nav_bar"); //得到导航对象
+        var win = $(window); //得到窗口对象
+        var doc = $(document); //得到document文档对象。
+        win.scroll(function() {
+          if (doc.scrollTop() >= 40) {
+            nav.addClass("nav-bar-fixed");
+          } else {
+            nav.removeClass("nav-bar-fixed");
+          }
+        });
+      });
+    </script>
+    <style type="text/css">
+      body {
+        height: 2420px;
+        background-color: #cde1fb;
+        padding: 0;
+        marging: 0;
+      }
+      /*logo条*/
+      .logo-bar {
+        background-color: #c4b956;
+        height: 40px;
+        font-size: large;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 40px;
+      }
+      /*导航条*/
+      .nav-bar {
+        height: 40px;
+        background-color: #98e1c9;
+        text-align: center;
+        font-size: large;
+        line-height: 40px;
+        padding: 0;
+        marging: 0;
+        width: 100%;
+      }
+      /*导航条跟随*/
+      .nav-bar-fixed {
+        position: fixed;
+        top: 0px;
+        z-index: 1;
+        background-color: #ff6668;
+        opacity: 0.68;
+        width: 100%;
+      }
+      /*导航条下li*/
+      .nav-bar > li {
+        display: inline-block; /*让li水平排列*/
+      }
+
+      /*导航条下a*/
+      .nav-bar > li > a {
+        display: block;
+        position: relative;
+        text-decoration: none;
+        color: #000000;
+        -webkit-transition: color 0.1s ease-in-out;
+        transition: color 0.1s ease-in-out;
+        margin-left: 75px; /*颜色递进*/
+        margin-right: 75px;
+      }
+
+      .nav-bar > li > a:hover {
+        color: #00abff;
+      }
+
+      /*导航栏下划线效果右进右出，需要设置父元素li：position: relative;*/
+      .nav-bar > li > a:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-bottom: solid 1px;
+        transform: scaleX(0);
+        transform-origin: right; /*改为center就是中间向外延伸*/
+        -webkit-transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
+        color: #0023ff;
+      }
+      /*导航栏下划线效果：右进改为左进*/
+      .nav-bar > li > a:hover:after {
+        transform-origin: left;
+        transform: scaleX(1);
+      }
+    </style>
+  </body>
+</html>
